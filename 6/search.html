@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Input Display</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #f8cdda, #1e90ff); 
+            color: #333;
+            margin: 0;
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #ffffff; 
+            padding: 30px;
+            border-radius: 15px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #1e90ff;
+        }
+        form {
+            display: flex;
+            justify-content: center; 
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1; 
+            padding: 10px;
+            border: 2px solid #1e90ff;
+            border-radius: 5px 0 0 5px;
+            font-size: 1em;
+            margin-right: -1px;
+        }
+        button {
+            padding: 10px 20px;
+            border: 2px solid #1e90ff;
+            border-radius: 0 5px 5px 0; 
+            background-color: #1e90ff;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0044cc;
+        }
+        .output {
+            font-size: 1.2em;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #1e90ff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .delete-btn {
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+        }
+        .radio-group label {
+            margin-right: 15px;
+        }
+        #noDataMessage {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Mencari data</h2>
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="output" id="output">
+            <table id="outputTable">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Keterangan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="outputTableBody">
+                    <!-- Data akan diisi dengan JavaScript -->
+                </tbody>
+            </table>
+            <p id="noDataMessage" style="display: none;">Tidak mencari data</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var inputText = document.getElementById("searchInput").value.trim(); 
+            var outputTable = document.getElementById("outputTable");
+            var outputTableBody = document.getElementById("outputTableBody");
+            var noDataMessage = document.getElementById("noDataMessage");
+
+            if (inputText === "") {
+                // Display a message if there are no entries and table is empty
+                if (outputTableBody.children.length === 0) {
+                    noDataMessage.style.display = "block";
+                }
+            } else {
+                noDataMessage.style.display = "none"; // Hide the no data message if there is new input
+
+                // Add new row with the input text
+                var newRow = document.createElement("tr");
+
+                // Create cell for input text
+                var newCell = document.createElement("td");
+                newCell.textContent = inputText;
+                newRow.appendChild(newCell);
+
+                
+                var radioCell = document.createElement("td");
+                radioCell.className = "radio-group";
+                
+               
+                var keteranganOptions = ['Sakit', 'Izin'];
+                keteranganOptions.forEach(function(option) {
+                    var label = document.createElement("label");
+                    var radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = "keterangan" + Date.now(); 
+                    radio.value = option;
+                    label.appendChild(radio);
+                    label.appendChild(document.createTextNode(option));
+                    radioCell.appendChild(label);
+                    
+                });
+
+                newRow.appendChild(radioCell);
+
+                var deleteCell = document.createElement("td");
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "Hapus";
+                deleteButton.className = "delete-btn";
+                deleteButton.addEventListener("click", function() {
+                    newRow.remove();
+                    if (outputTableBody.children.length === 0) {
+                        noDataMessage.style.display = "block";
+                    }
+                });
+                deleteCell.appendChild(deleteButton);
+                newRow.appendChild(deleteCell);
+
+                outputTableBody.appendChild(newRow);
+            }
+        });
+    </script>
+
+</body>
+</html>

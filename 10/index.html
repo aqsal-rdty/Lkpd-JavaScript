@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilihan Pendidikan dan Kelas</title>
+</head>
+<body>
+    <label for="pendidikan">Jenjang Pendidikan:</label>
+    <select id="pendidikan">
+        <option value="">Pilih</option>
+        <option value="SD">SD</option>
+        <option value="SMP">SMP</option>
+        <option value="SMA">SMA</option>
+        <option value="D3">D3</option>
+        <option value="S1">S1</option>
+    </select>
+
+    <h3>Tingkat Sekolah/Perguruan</h3>
+    <select id="kelas">
+        <option value="">Pilih kelas atau Semester</option>
+    </select>
+
+    <h3>Anda memilih:</h3>
+    <p id="pilihanAnda"></p>
+
+    <script>
+        const pendidikan = {
+            "SD": ["Kelas 1", "Kelas 2", "Kelas 3", "Kelas 4", "Kelas 5", "Kelas 6"],
+            "SMP": ["Kelas 7", "Kelas 8", "Kelas 9"],
+            "SMA": ["Kelas 10", "Kelas 11", "Kelas 12"],
+            "D3": ["Semester 1", "Semester 2", "Semester 3", "Semester 4", "Semester 5", "Semester 6"],
+            "S1": ["Semester 1", "Semester 2", "Semester 3", "Semester 4", "Semester 5", "Semester 6", "Semester 7", "Semester 8"]
+        };
+
+        document.getElementById("pendidikan").addEventListener("change", function() {
+            const kelasSelect = document.getElementById("kelas");
+            kelasSelect.innerHTML = '<option value="">Pilih kelas atau Semester</option>';
+            (pendidikan[this.value] || []).forEach(kelas => {
+                kelasSelect.innerHTML += `<option value="${kelas}">${kelas}</option>`;
+            });
+        });
+
+        document.getElementById("kelas").addEventListener("change", function() {
+            const pendidikanVal = document.getElementById("pendidikan").value;
+            const pilihanAnda = document.getElementById("pilihanAnda");
+            pilihanAnda.textContent = pendidikanVal ? `Anda memilih ${pendidikanVal} - ${this.value}.` : '';
+        });
+    </script>
+</body>
+</html>

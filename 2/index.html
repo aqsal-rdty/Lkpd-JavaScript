@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+      </svg>
+    <title>Liburan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #ffffff; 
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            width: 100px; 
+            margin-left: 10px;
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin-left: 2rem;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500; 
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffdd57;
+            transform: scale(1.1);
+        }
+
+        .destinations {
+            padding: 3rem 2rem;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .destinations h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .destination-card {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); 
+        }
+
+        .destination-card img {
+            width: 40%;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 1.5rem;
+        }
+
+        .destination-card .text {
+            flex: 1;
+        }
+
+        .destination-card h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .destination-card p {
+            margin: 0.5rem 0;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .read-more:hover {
+            color: #0056b3;
+            transform: scale(1.05); 
+        }
+
+        button {
+            border-radius: 8px;
+            background-color: #28a745;
+            width: 100%;
+            padding: 12px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05); 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="D.png" alt="Logo">
+        </div>
+        <ul class="menu">
+            <li><a href="#destinations">Destinasi</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section id="destinations" class="destinations">
+        <h2>Destinasi Populer</h2>
+        <div class="destination-card">
+            <img src="A.png" alt="Pantai Bali">
+            <div class="text">
+                <h3>Pantai Bali</h3>
+                <p>Temukan keindahan pasir putih dan laut biru di Pantai Bali. Ideal untuk bersantai dan menikmati matahari.</p>
+                <p><strong>Viewers:</strong> 1,200 | <strong>Comments:</strong> 45</p>
+                <a href="https://www.klook.com/id/blog/pantai-di-bali/" class="read-more"><button>Baca Selengkapnya</button></a>
+            </div>
+        </div>
+        <div class="destination-card">
+            <img src="B.jpg" alt="Gunung Bromo">
+            <div class="text">
+                <h3>Gunung Bromo</h3>
+                <p>Rasakan keajaiban alam di Gunung Bromo, terkenal dengan pemandangan matahari terbitnya yang menakjubkan.</p>
+                <p><strong>Viewers:</strong> 850 |<i class="bi bi-chat-left-dots-fill"></i> <strong>Comments:</strong> 30</p>
+                <a href="https://royaletravel.co.id/blog/menyusuri-jejak-megah-sejarah-gunung-bromo-yang-mempesona" class="read-more"><button>Baca Selengkapnya</button></a>
+            </div>
+        </div>
+        <div class="destination-card">
+            <img src="C.webp" alt="Kota Yogyakarta">
+            <div class="text">
+                <h3>Kota Yogyakarta</h3>
+                <p>Jelajahi budaya dan sejarah di Kota Yogyakarta, penuh dengan tempat wisata dan kuliner yang lezat.</p>
+                <p><strong>Viewers:</strong> 950 | <strong>Comments:</strong> 20</p>
+                <a href="https://www.agoda.com/id-id/travel-guides/indonesia/yogyakarta/3-days-in-yogyakarta-itinerary-a-cultural-and-historical-exploration/" class="read-more"><button>Baca Selengkapnya</button></a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

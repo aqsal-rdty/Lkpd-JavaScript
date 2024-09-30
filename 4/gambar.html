@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambar dengan Filter Opacity</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: floralwhite;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div>
+            <h3>Gambar Asli</h3>
+            <img id="original" src="s.jpg" width="400px" />
+        </div>
+        <div>
+            <h3>Gambar dengan Opacity</h3>
+            <img id="preview" src="s.jpg" width="400px" style="opacity: 1;" />
+        </div>
+    </div>
+
+    <h1>Ubah Gambar dan Filter Opacity</h1>
+
+    <form>
+        <div>
+            <label for="gambar">Pilih Gambar:</label>
+            <input type="radio" name="gambar" value="h.jpg" checked> Gambar 1
+            <input type="radio" name="gambar" value="s.jpg"> Gambar 2
+            <input type="radio" name="gambar" value="v.jpg"> Gambar 3
+        </div>
+
+        <div style="margin-top: 10px;">
+            <label for="opacity">Pilih Opacity:</label>
+            <input type="radio" name="opacity" value="1" checked> 1 
+            <input type="radio" name="opacity" value="0.5"> 0.5
+            <input type="radio" name="opacity" value="0.2"> 0.2
+        </div>
+
+        <button type="button" onclick="ubahGambar()">Ubah Gambar</button>
+    </form>
+
+    <script>
+        function ubahGambar() {
+            const gambar = document.querySelector('input[name="gambar"]:checked').value;
+            const opacity = document.querySelector('input[name="opacity"]:checked').value;
+            const original = document.getElementById('original');
+            const preview = document.getElementById('preview');
+
+            original.src = gambar;
+            preview.src = gambar;
+
+            preview.style.opacity = opacity;
+        }
+    </script>
+</body>
+</html>
